@@ -21,7 +21,7 @@
 
 ### 0. 주의 사항
 
-- API 요청은 JavaScript가 아닌 **Spring Application에서** 생성
+- API 요청은 JavaScript가 아닌 **Spring Application** 에서 생성
 - CSS를 이용한 레이아웃의 스타일링은 **선택적으로** 진행
 - '구현 예시'는 참고 용도로만 제공되는 것이며, 반드시 **똑같이 구현할 필요 없음**
 - 아래의 명세에 명시되지 않은 내용은 **자유롭게** 구현
@@ -52,31 +52,26 @@
 
         ![Collection View](README/collection-view.png)
 
-### 3. (선택) Test Code
-- 구현한 기능이 정상 동작하는지 검증하기 위한 테스트 코드 작성
-- Unit Test, Spring Boot Integration Test 활용
-
-
 ## 제출 방법
 
 - Git을 통해 프로젝트 URL의 GitHub repository를 로컬로 clone
 
     ```bash
-    $ git clone https://github.com/coupang-edu/c4e-springboot-project-01
-    $ cd c4e-springboot-project-01
+    $ git clone https://github.com/3rd-asac/spring-cat-tutorial
+    $ cd spring-cat-tutorial
     ```
 
-- 본인의 `사내 이메일의 아이디 부분`으로 branch 생성 및 이동
+- 본인의 `닉네임`으로 branch 생성 및 이동
 
     ```bash
-    $ git switch -c john
+    $ git switch -c aaron
     ```
 
 - 코드 작성이 완료된 프로젝트를, 아래와 같이 프로젝트 폴더명을 본인의 영문명으로 변경
 
     ```bash
     README.md
-    john/
+    aaron/
         ├── gradle/
         ├── src/
         ├── build.gradle
@@ -88,7 +83,7 @@
 - 코드 작성 완료 후, 해당 branch를 push
 
     ```bash
-    $ git push origin john
+    $ git push origin aaron
     ```
 
-- Pull Request 생성하여 제출 완료
+- Pull Request 생성하여 Google Form 내 해당 URL 을 입력하여 제출 완료
