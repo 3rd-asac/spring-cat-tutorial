@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CatPhotos</title>
+</head>
+<body>
+<h1>Cat Photos</h1>>
+
+<div>How many photos? </div>>
+    <form action="/api/v1/images" method="post">
+        <div class="form-group">
+            <label for="imageNumber">숫자</label>
+            <input type="number" id="imageNumber" name="imageNumber" placeholder="이미지 숫자를 입력하세요"> </div>
+        <button type="submit">찾기</button>
+    </form>
+
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>이름</th> </tr>
+        </thead>
+        <tbody>
+        <!--      루프를 돌면서 리스트 속 member 객체를 꺼내서 리스트를 만든다.-->
+        <tr th:each="image : ${images}">
+            <td th:text="${image.id}"></td>
+            <td th:text="${image.url}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
