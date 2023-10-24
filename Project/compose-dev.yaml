@@ -1,0 +1,45 @@
+services:
+  backend:
+    build:
+      context: backend
+      target: runner
+    secrets:
+      - db-password
+    depends_on:
+      - db
+
+#  backend2:
+#    build:
+#      context: backend2
+#      target: development
+#    secrets:
+#      - db-password
+#    depends_on:
+#      - db
+
+  db:
+    image: postgres
+    restart: always
+    secrets:
+      - db-password
+    volumes:
+      - db-data:/var/lib/postgres
+
+
+  proxy:
+    build: proxy
+    ports:
+      - 8080:80
+    depends_on:
+      - backend
+
+volumes:
+  db-data:
+
+secrets:
+  db-password:
+    file: db/password.txt
+
+
+
+# 네트워크
