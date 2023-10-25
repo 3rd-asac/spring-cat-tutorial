@@ -21,14 +21,14 @@ public class UserService {
 
 
     //POST
-    public PostOrderDetailRes createUser(PostUserReq postUserReq) throws BaseException {
+    public PostUserRes createUser(PostUserReq postUserReq) throws BaseException {
         //중복
         if(checkEmail(postUserReq.getEmail()) ==1){
             throw new BaseException(POST_USERS_EXISTS_EMAIL);
         }
         try{
             int userId = userDao.createUser(postUserReq); // POINT
-            return new PostOrderDetailRes(userId);
+            return new PostUserRes(userId);
         } catch (Exception exception) {
             throw new BaseException(DATABASE_ERROR);
         }
