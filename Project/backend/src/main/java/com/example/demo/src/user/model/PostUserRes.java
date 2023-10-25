@@ -7,6 +7,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class PostOrderDetailRes {
+public class PostUserRes {
     private int id;
 }
