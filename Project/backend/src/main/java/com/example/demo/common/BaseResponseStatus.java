@@ -26,15 +26,15 @@ public enum BaseResponseStatus {
     RESPONSE_ERROR(false, HttpStatus.NOT_FOUND.value(), "값을 불러오는데 실패하였습니다."),
 
     // [POST] /users
-    DUPLICATED_EMAIL(false, HttpStatus.BAD_REQUEST.value(), "중복된 이메일입니다."),
-    FAILED_TO_LOGIN(false,HttpStatus.NOT_FOUND.value(),"없는 아이디거나 비밀번호가 틀렸습니다."),
+    DUPLICATED_EMAIL(false, HttpStatus.BAD_REQUEST.value(), "already registered"),
+    FAILED_TO_LOGIN(false,HttpStatus.NOT_FOUND.value(),"non matching"),
 
 
     /**
      * 500 :  Database, Server 오류
      */
-    DATABASE_ERROR(false, HttpStatus.INTERNAL_SERVER_ERROR.value(), "데이터베이스 연결에 실패하였습니다."),
-    SERVER_ERROR(false, HttpStatus.INTERNAL_SERVER_ERROR.value(), "서버와의 연결에 실패하였습니다."),
+    DATABASE_ERROR(false, HttpStatus.INTERNAL_SERVER_ERROR.value(), "DB Connection Failed"),
+    SERVER_ERROR(false, HttpStatus.INTERNAL_SERVER_ERROR.value(), "Server Connection Failed"),
 
     //[PATCH] /users/{userIdx}
     MODIFY_FAIL_USERNAME(false,HttpStatus.INTERNAL_SERVER_ERROR.value(),"유저네임 수정 실패"),

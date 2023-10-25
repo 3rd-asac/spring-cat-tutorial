@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class PatchUserReq {
+public class PatchOrderDetailReq {
     private int id;
-    private String name;
+    private String order_detail_status;
 }

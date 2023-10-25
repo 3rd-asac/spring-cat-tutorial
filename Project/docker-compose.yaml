@@ -1,33 +1,53 @@
 services:
   db:
-    image: postgres
+    # If you really want to use MySQL, uncomment the following line
+    image: mysql
+    environment:
+      - MYSQL_DATABASE=coupang
+      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db-password
     restart: always
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "--silent"]
+      interval: 3s
+      retries: 5
+      start_period: 30s
     secrets:
       - db-password
     volumes:
-      - db-data:/var/lib/postgres
-    environment:
-      - POSTGRES_DATABASE=example
-      - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
-    expose:
-      - 5432
+      - db-data:/var/lib/mysql
+    networks:
+      - spring-mysql
 
   backend:
     build: backend
+    restart: always
+    secrets:
+      - db-password
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
+      MYSQL_HOST: db
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - nginx-spring
+      - spring-mysql
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
   proxy:
     build: proxy
     ports:
       - 8080:80
+    networks:
+      - nginx-spring
     depends_on:
       - backend
 
 volumes:
-  db-data:
+  db-data: {}
 secrets:
   db-password:
     file: db/password.txt
+networks:
+  react-spring: {}
+  spring-mysql: {}
