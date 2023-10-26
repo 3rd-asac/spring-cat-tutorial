@@ -1,7 +1,7 @@
 package com.coupang.demo.controller;
 
 import com.coupang.demo.DTO.*;
-import com.coupang.demo.service.CatPhotoService;
+import com.coupang.demo.service.CatImageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,28 +11,28 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CatController {
 
-    private final CatPhotoService catPhotoService;
+    private final CatImageService catImageService;
 
     @GetMapping("/api/v1/images")
-    public List<CatImage> getImages(@RequestParam Long imageNumber){
-        return catPhotoService.getCatImages(imageNumber);
+    public List<CatImage> getImages(@RequestParam Long imageCount){
+        return catImageService.getCatImages(imageCount);
     }
 
-    @PostMapping("/api/v1/favourite")
+    @PostMapping("/api/v1/favourites")
     public FavouriteResDto postFavourite(@RequestBody FavouriteDto favouriteDto){
-        return catPhotoService.postCatFavourite(favouriteDto);
+        return catImageService.postCatFavourite(favouriteDto);
     }
 
-    @GetMapping("/api/v1/favourite")
+    @GetMapping("/api/v1/favourites")
     public List<FavouriteImageDto> getFavouriteImages(@RequestParam Long page, @RequestParam String limit, @RequestParam String sub_id){
         FavouriteImageReqDto favouriteImageReqDto = FavouriteImageReqDto.builder()
                 .page(0L)
-                .limit("100")
-                .sub_id("user-1").build();
-        return catPhotoService.getCatFavouriteImages(favouriteImageReqDto);
+                .limit(100L)
+                .sub_id(sub_id).build();
+        return catImageService.getCatFavouriteImages(favouriteImageReqDto);
     }
-    @DeleteMapping("/api/v1/favourite")
+    @DeleteMapping("/api/v1/favourites")
     public String deleteFavourite(@RequestParam String favouriteId){
-        return catPhotoService.deleteFavourite(favouriteId);
+        return catImageService.deleteFavourite(favouriteId);
     }
 }

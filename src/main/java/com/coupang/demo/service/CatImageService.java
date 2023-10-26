@@ -14,7 +14,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class CatPhotoService implements CatService {
+public class CatImageService implements CatService {
     private final RestTemplate restTemplate;
 
     @Value("${external-api.url}")
@@ -24,11 +24,11 @@ public class CatPhotoService implements CatService {
     private String apiKey;
 
     @Override
-    public List<CatImage> getCatImages(Long imageNumber) {
+    public List<CatImage> getCatImages(Long imageCount) {
         URI uri = UriComponentsBuilder
                 .fromUriString(apiUrl)
                 .path("/images/search")
-                .queryParam("limit",imageNumber)
+                .queryParam("limit",imageCount)
                 .encode()
                 .build()
                 .toUri();
@@ -101,10 +101,10 @@ public class CatPhotoService implements CatService {
                 });
 
         if(responseEntity.getStatusCode().equals(HttpStatus.OK)){
-            return "delete";
+            return "즐겨찾기 삭제 성공";
         }
         else{
-            return "prodlem";
+            return "오류 : 서버 내용확인";
         }
     }
 

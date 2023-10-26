@@ -9,6 +9,6 @@ import lombok.Setter;
 @Builder
 public class FavouriteImageReqDto {
     private Long page;
-    private String limit;
+    private Long limit;
     private String sub_id;
 }
