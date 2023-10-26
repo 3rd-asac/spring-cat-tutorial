@@ -1,5 +1,7 @@
 package com.asac.catapiapp.service;
 
+import com.asac.catapiapp.constant.api.params.Cat_Api_Param;
+import com.asac.catapiapp.constant.api.path.Cat_Api_Path;
 import com.asac.catapiapp.model.CatResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -7,8 +9,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -20,14 +20,12 @@ public class CatService {
     @Value("${api.key}")
     private String API_KEY;
 
-    private final String CAT_API_URL = "https://api.thecatapi.com/v1/images/search";
-
     public CatResponse[] getRandomCatImage(String limit) {
         RestTemplate restTemplate = new RestTemplate();
         URI uri = UriComponentsBuilder
-                .fromUriString("https://api.thecatapi.com") //http://localhost에 호출
-                .path("/v1/images/search")
-                .queryParam("limit", limit)  // query parameter가 필요한 경우 이와 같이 사용
+                .fromUriString(Cat_Api_Path.BASEURI)
+                .path(Cat_Api_Path.CATIMAGE)
+                .queryParam(Cat_Api_Param.LIMIT, limit)  // query parameter가 필요한 경우 이와 같이 사용
                 .encode()
                 .build()
                 .toUri();
