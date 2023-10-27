@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Cat_Image API</title>
+    <script src="/cat.js"></script>
+</head>
+<body>
+<h1>Cat Photos</h1>
+
+<form name="frm">
+    <input type="button" onclick="location='/';" value="Back Main"/><br>
+    <b>Favourites photos: </b>
+
+    <div th:each="Image_cat : ${favouritesResponse}">
+        <img th:src="${Image_cat.getImage().getUrl()}" width="500" height="500"/>
+        <input type="checkbox" name="image_id" th:value="${Image_cat.getId()}"/>
+    </div>
+</form>
+</body>
+</html>
