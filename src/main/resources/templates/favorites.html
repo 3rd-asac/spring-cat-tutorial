@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Favorited Cat Images</title>
+</head>
+<body>
+<div>
+    <th:block th:each="catImage : ${favorites}">
+        <img th:src="${catImage.image.url}" alt="Favorited Cat Image">
+        <div th:if="${catImage.breeds != null and !catImage.breeds.isEmpty()}" th:text="${catImage.breeds[0].name}"></div>
+        <div th:if="${catImage.breeds == null or catImage.breeds.isEmpty()}" th:text="'Unknown'"></div>
+        <form th:action="@{/cats/favorites/delete}" method="post">
+            <button type="submit" name="favoriteId" th:value="${catImage.id}">Delete from Favorites</button>
+        </form>
+    </th:block>
+</div>
+</body>
+</html>
