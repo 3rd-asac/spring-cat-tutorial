@@ -58,4 +58,12 @@ public class CatController {
         model.addAttribute("favouritesResponse", favouritesResponse);
         return "favourites";
     }
+
+    @PostMapping("/Delete/cat")
+    public String deleteFavouritesCat(@RequestParam("image_id") String[] ids){
+        for(String s : ids)
+            catService.DeleteFavourtiesImages(s);
+
+        return "index";
+    }
 }

@@ -11,6 +11,7 @@
 <form name="frm">
     <input type="button" onclick="location='/';" value="Back Main"/><br>
     <b>Favourites photos: </b>
+    <button onclick="DeleteFavouritesCat();">Delete Collection Photos</button>
 
     <div th:each="Image_cat : ${favouritesResponse}">
         <img th:src="${Image_cat.getImage().getUrl()}" width="500" height="500"/>

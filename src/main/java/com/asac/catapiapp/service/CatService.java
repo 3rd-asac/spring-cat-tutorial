@@ -13,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.stream.DoubleStream;
 
 @Service
 public class CatService {
@@ -97,5 +98,24 @@ public class CatService {
         }
 
         return favouritesResponse;
+    }
+
+    public void DeleteFavourtiesImages(String image_id){
+        RestTemplate restTemplate = new RestTemplate();
+        URI uri = UriComponentsBuilder
+                .fromUriString(Cat_Api_Path.BASEURI)
+                .path(Cat_Api_Path.FAVOURITES + "/" + image_id)
+                .encode()
+                .build()
+                .toUri();
+
+        System.out.println(uri.getPath() + "s");
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("x-api-key", API_KEY);
+        headers.set("Content-Type", "application/json");
+        HttpEntity<?> entity = new HttpEntity<>(headers);
+
+        restTemplate.exchange(uri, HttpMethod.DELETE, entity, String.class);
     }
 }
