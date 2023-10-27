@@ -26,10 +26,7 @@ public class CatController {
 
     @GetMapping("/Image/cat/{limit}")
     public String getRandomCat(@PathVariable(value = "limit") String limit, Model model) {
-        System.out.println(limit);
         CatResponse[] catResponses = catService.getRandomCatImage(limit);
-        for(CatResponse c : catResponses)
-            System.out.println(c.getUrl());
         model.addAttribute("catImages", catResponses);
         return "index";
     }
@@ -39,7 +36,6 @@ public class CatController {
         FavouritesResponse cid = new FavouritesResponse();
         for(String s : ids){
             cid = catService.saveCatImage(s, sub_id);
-            System.out.println(cid.getId() + "cid");
         }
         model.addAttribute("favourites_id", cid.getId());
         return "index";
@@ -54,7 +50,6 @@ public class CatController {
             return "error";
         }
 
-        System.out.println(favouritesResponse[0].getImage().getUrl());
         model.addAttribute("favouritesResponse", favouritesResponse);
         return "favourites";
     }

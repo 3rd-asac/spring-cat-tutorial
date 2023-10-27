@@ -109,8 +109,6 @@ public class CatService {
                 .build()
                 .toUri();
 
-        System.out.println(uri.getPath() + "s");
-
         HttpHeaders headers = new HttpHeaders();
         headers.set("x-api-key", API_KEY);
         headers.set("Content-Type", "application/json");
