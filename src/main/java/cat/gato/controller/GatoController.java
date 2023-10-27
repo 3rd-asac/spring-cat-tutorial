@@ -1,22 +1,15 @@
 package cat.gato.controller;
 
 import cat.gato.domain.CatImage;
-import cat.gato.service.GatoSerivce;
+import cat.gato.service.GatoService; // 오타 수정
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -24,27 +17,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GatoController {
 
-    private static final String CAT_API_URL = "https://api.thecatapi.com/v1/images/search";
-    @Value("${thecatapi.api-key}")
-    private String apiKey;
-
-    private final RestTemplate restTemplate = new RestTemplate();
-
-    private final GatoSerivce gatoService;
+    private final GatoService gatoService;
 
     @GetMapping
     public String getRandomCatImages(Model model, @RequestParam(defaultValue = "1") int limit) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("x-api-key", apiKey);
-
-        ResponseEntity<CatImage[]> response = restTemplate.exchange(
-                CAT_API_URL + "?limit=" + limit,
-                HttpMethod.GET,
-                new HttpEntity<>(headers),
-                CatImage[].class
-        );
-
-        List<CatImage> catImages = Arrays.asList(response.getBody());
+        List<CatImage> catImages = gatoService.getRandomCatImages(limit);
         model.addAttribute("catImages", catImages);
         return "cats";
     }

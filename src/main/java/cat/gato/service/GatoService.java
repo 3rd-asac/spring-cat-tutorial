@@ -14,7 +14,7 @@ import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
-public class GatoSerivce {
+public class GatoService {
 
     private static final String CAT_FAVORITE_URL = "https://api.thecatapi.com/v1/favourites";
     private static final String CAT_FAVORITE_DELETE_URL = "https://api.thecatapi.com/v1/favourites/";
@@ -22,7 +22,6 @@ public class GatoSerivce {
     private static final String CAT_API_URL = "https://api.thecatapi.com/v1/images/search";
     @Value("${thecatapi.api-key}")
     private String apiKey;
-
 
     private final RestTemplate restTemplate = new RestTemplate();
 
