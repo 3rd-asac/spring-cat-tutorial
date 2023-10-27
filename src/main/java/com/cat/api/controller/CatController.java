@@ -1,7 +1,8 @@
-package com.coupang.demo.controller;
+package com.cat.api.controller;
 
-import com.coupang.demo.DTO.*;
-import com.coupang.demo.service.CatImageService;
+import com.cat.api.DTO.*;
+import com.cat.api.service.CatImageService;
+import com.cat.api.DTO.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

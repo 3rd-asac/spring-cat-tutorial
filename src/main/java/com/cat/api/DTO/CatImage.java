@@ -1,4 +1,4 @@
-package com.coupang.demo.DTO;
+package com.cat.api.DTO;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;

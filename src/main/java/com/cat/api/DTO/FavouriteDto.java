@@ -1,4 +1,4 @@
-package com.coupang.demo.DTO;
+package com.cat.api.DTO;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package com.coupang.demo;
+package com.cat.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

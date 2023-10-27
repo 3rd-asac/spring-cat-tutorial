@@ -1,4 +1,4 @@
-package com.coupang.demo;
+package com.cat.api;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
