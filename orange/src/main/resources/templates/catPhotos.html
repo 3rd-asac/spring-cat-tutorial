@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th=”http://www.thymeleaf.org”>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <a href="http://localhost:8080/cat-photos">Cat Photos</a>
+    <a href="http://localhost:8080/collection">Collection</a>
+    <h1>Cat Photos</h1>
+    <form th:action="@{/cat}" method="post">
+
+        How many photos?: <input type="text" name="count" th:value="${count}"/>
+        <input type="submit" value="Get Photos"/><br>
+
+        <ul th:if="${imageUrls}">
+            <li th:each="url: ${imageUrls}">
+                <img th:src="${url}" alt ="no image">
+            </li>
+        </ul>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: "jdbc:mysql://localhost/cat"
+    username: "root"
+    password: "0000"
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  application:
+    name: MyApplication
+  main:
+    banner-mode: off
+# RestTemplate ??
+spring.restTemplate:
+  read-timeout: 5000
+  connect-timeout: 5000
