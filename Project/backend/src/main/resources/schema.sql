@@ -33,3 +33,16 @@ CREATE TABLE ORDER_DETAIL
     `delivery_id`             bigint       NOT NULL,
     CONSTRAINT ORDER_DETAIL_PK PRIMARY KEY (id)
 );
+
+-- CAT 테이블
+DROP TABLE IF EXISTS CAT;
+CREATE TABLE CAT
+(
+    id      int unsigned NOT NULL AUTO_INCREMENT,
+    img_id  varchar(3),
+    url     varchar(45),
+    created timestamp   DEFAULT CURRENT_TIMESTAMP,
+    updated timestamp   DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    status  varchar(10) DEFAULT 'ACTIVE',
+    CONSTRAINT CAT_PK PRIMARY KEY (id)
+);
