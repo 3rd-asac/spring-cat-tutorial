@@ -7,6 +7,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class PostOrderDetailRes {
+public class Cat {
     private int id;
+    private String img_id;
+    private String url;
 }

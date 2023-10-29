@@ -1,6 +1,5 @@
 package com.example.demo.src.cat.model;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,9 +7,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class GetUserRes {
+public class PostCatRes {
     private int id;
-    private String email;
-    private String password;
-    private String name;
 }
