@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cat Photos</title>
+</head>
+<body>
+    <a href="/catphotos" th:href="@{/catphotos}">Cat Photos</a>
+    <a href="/favourites" th:href="@{/favourites}">Collection</a>
+    <h1>Cat Photos</h1>
+    <form th:action="@{/photos}">
+        <div>
+            <label for="numberOfPhotos">How many photos?</label>
+            <input type="number" name="numberOfPhotos" id="numberOfPhotos">
+        </div>
+        <button type="submit">Get Photos</button>
+    </form>
+    <form th:name="photoListForm" th:action="@{/favourites}" th:method="post">
+        <button th:type="submit">Add selected photos to collection</button>
+        <table>
+            <thead>
+            <tr>
+                <th>고양이 사진</th>
+                <th>선택</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="photo : ${CatPhotoDto}">
+                    <td><img th:src="${photo.url}" width="300" height="300"/></td>
+                    <td><input th:type="checkbox" th:name="checkedValues" th:value="${photo.id}" th:checked="false"></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</body>
+</html>

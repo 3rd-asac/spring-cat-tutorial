@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Collection</title>
+</head>
+<body>
+  <h1>Collection - Favourites</h1>
+  <form th:name="favouriteListForm" th:action="@{/favourites}" th:method="delete">
+      <button th:type="submit">Delete selected collection</button>
+      <table>
+          <thead>
+          <tr>
+              <th>고양이 사진</th>
+              <th>선택</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="favourite : ${FavouriteDto}">
+              <td><img th:src="${favourite.image.url}" width="300" height="300"/></td>
+              <td><input th:type="checkbox" th:name="checkedValues" th:value="${favourite.id}" th:checked="false"></td>
+          </tr>
+          </tbody>
+      </table>
+  </form>
+</body>
+</html>
